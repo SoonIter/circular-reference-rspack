@@ -26,7 +26,9 @@ module.exports = {
 };
 ```
 
-## node result
+## test
+
+### Node.js
 
 ```sh
 ❯ npm run run:esm
@@ -47,9 +49,9 @@ ReferenceError: Cannot access 'a' before initialization
     at async handleMainPromise (node:internal/modules/run_main:65:12)
 ```
 
-## rspack/webpack result
+### Rspack/webpack
 
-### `output.environment.const = false`
+#### `output.environment.const = false`
 
 ```sh
 ❯ npm run run
@@ -63,7 +65,7 @@ b in a module modified-b
 a in index.mjs undefined
 ```
 
-### `output.environment.const = true`
+#### `output.environment.const = true`
 
 ```sh
 ❯ npm run run
