@@ -1,0 +1,12 @@
+{
+  "name": "circular-esm",
+  "scripts": {
+    "build": "rspack",
+    "run": "rspack && node ./dist/main.js",
+    "run:esm": "node ./src/index.mjs"
+  },
+  "devDependencies": {
+    "@rspack/cli": "1.0.0-alpha.5",
+    "@rspack/core": "1.0.0-alpha.5"
+  }
+}
