@@ -1,12 +1,12 @@
-# Circular reference in esm
+# Circular reference
 
 ## Summary
 
 `output.environment.const = false`
 
-This configuration will hide some potential runtime errors in the case of cyclic dependencies.
+This configuration will hide some potential runtime errors in the case of circular references.
 
-We should try our best to use `output.environment.const = true` and repair circular references at compile time.
+We should try our best to use `output.environment.const = true` and repair circular references at compile time, `output.environment.const = false` can be used in an emergency.
 
 ```sh
 # dep graph
