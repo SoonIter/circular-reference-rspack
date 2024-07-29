@@ -2,11 +2,13 @@
 
 ## Summary
 
-`output.environment.const = false`
+`output.environment.const = false` and `ReferenceError: Cannot access '__WEBPACK_DEFAULT_EXPORT__' before initialization`
 
 This configuration will hide some potential runtime errors in the case of circular references.
 
-We should try our best to use `output.environment.const = true` and repair circular references at compile time, `output.environment.const = false` can be used in an emergency.
+We should try our best to use `output.environment.const = true` and repair circular references at development, `output.environment.const = false` can be used in an emergency.
+
+`output.environment.const = false` may be set under production due to browser compatibility of `const` syntax, so this error message might only show under development.
 
 ```sh
 # dep graph
