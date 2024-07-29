@@ -1,4 +1,12 @@
-# Circular reference esm
+# Circular reference in esm
+
+## Summary
+
+`output.environment.const = false`
+
+This configuration will hide some potential runtime errors in the case of cyclic dependencies.
+
+We should try our best to use `output.environment.const = true` and repair circular references at compile time.
 
 ```sh
 # dep graph
@@ -21,9 +29,12 @@ module.exports = {
 ## node result
 
 ```sh
-> npm run run:esm
+❯ npm run run:esm
 
-file:///Users/user/circular-esm/src/b.mjs:5
+> circular-esm@ run:esm /Users/demos/circular-esm
+> node ./src/index.mjs
+
+file:///Users/demos/circular-esm/src/b.mjs:5
 console.log('a in b module', a);
                              ^
 
@@ -38,7 +49,7 @@ ReferenceError: Cannot access 'a' before initialization
 
 ## rspack/webpack result
 
-### const: false
+### `output.environment.const = false`
 
 ```sh
 ❯ npm run run
@@ -52,7 +63,7 @@ b in a module modified-b
 a in index.mjs undefined
 ```
 
-### const: true
+### `output.environment.const = true`
 
 ```sh
 ❯ npm run run
@@ -76,11 +87,3 @@ ReferenceError: Cannot access '__WEBPACK_DEFAULT_EXPORT__' before initialization
     at Object.Module._extensions..js (node:internal/modules/cjs/loader:1219:10)
     at Module.load (node:internal/modules/cjs/loader:1043:32)
 ```
-
-### Summary
-
-`output.environment.const = false`
-
-This configuration will hide some potential runtime errors in the case of cyclic dependencies.
-
-We should try our best to use `output.environment.const = true` and repair circular references at compile time.
