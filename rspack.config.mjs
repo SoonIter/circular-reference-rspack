@@ -4,6 +4,12 @@ export default defineConfig({
   entry: {
     main: './src/index.mjs',
   },
+
+  output: {
+    environment: {
+      const: true,
+    },
+  },
   module: {
     rules: [
       {
